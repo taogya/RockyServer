@@ -1,0 +1,78 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Makemigrations",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rocky/manage.py",
+            "args": [
+                "makemigrations"
+            ],
+            "django": true
+        },
+        {
+            "name": "Migrate",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rocky/manage.py",
+            "args": [
+                "migrate"
+            ],
+            "django": true
+        },
+        {
+            "name": "Loaddata",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rocky/manage.py",
+            "args": [
+                "loaddata",
+                "xxxxx.json"
+            ],
+            "django": true
+        },
+        {
+            "name": "Runserver",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rocky/manage.py",
+            "args": [
+                "runserver",
+                "0.0.0.0:8080"
+            ],
+            "django": true
+        },
+        {
+            "name": "Collectstatic",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rocky/manage.py",
+            "args": [
+                "collectstatic"
+            ],
+            "django": true
+        },
+        {
+            "name": "Test",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rocky/manage.py",
+            "args": [
+                "test",
+                "xxxxx.xxxxx.xxxxx"
+            ],
+            "django": true
+        },
+        {
+            "name": "Manage",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rocky/manage.py",
+            "args": [
+                "xxxxx",
+            ],
+            "django": true
+        }
+    ]
+}

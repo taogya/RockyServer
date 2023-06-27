@@ -1,0 +1,22 @@
+[Unit]
+Description=uWSGI Service
+After=syslog.target
+
+[Service]
+User=rocky
+Group=rocky
+WorkingDirectory=/home/rocky/app/RockyServer/
+ExecStart=/bin/sh -c '\
+    . .venv/bin/activate;\
+    uwsgi --ini conf/uwsgi/uwsgi.ini;\
+'
+RuntimeDirectory=uwsgi
+Restart=always
+KillSignal=SIGQUIT
+StandardError=syslog
+Type=notify
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
+
