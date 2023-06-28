@@ -2,7 +2,7 @@
 Base Web Server for development on RockyLinux with Django, uWSGI, PostgreSQL
 
 
-# Overview
+# Introduction
 example built with UTM on Mac Book.  
 This is do task below.
   - [Setup Firewall](#firewall)
@@ -11,8 +11,6 @@ This is do task below.
   - [Setup Git](#git)
   - [Setup Django](#django)
   - [Setup uWSGI](#uwsgi)
-   
-The administrator user is "admin".  
 
 <a id="firewall"></a>
 ## Setup Firewall
