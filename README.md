@@ -1,5 +1,6 @@
 # RockyServer
 Base Web Server for development on RockyLinux with Django, uWSGI, PostgreSQL
+This repository codes are results of doing below.
 
 
 # Introduction
@@ -11,6 +12,7 @@ This is do task below.
   - [Setup Git](#git)
   - [Setup Django](#django)
   - [Setup uWSGI](#uwsgi)
+  - [Setup for Visual Studio Code](#develop)
 
 <a id="firewall"></a>
 ## Setup Firewall
@@ -456,3 +458,142 @@ $ sudo systemctl start uwsgi
 ```
 -> access to http://localhost:8000/admin  
    If admin view is displayed, it is success.
+
+<a id="develop"></a>
+## Setup for Visual Studio Code
+```sh
+# install package
+$ sudo yum install -y tar
+$ sudo su - rocky
+$ cd app/RockyServer
+
+# isort
+$ vi .isort.cfg
+[settings]
+default_section=THIRDPARTY
+force_single_line=False
+known_first_party=rocky
+sections = FUTURE,STDLIB,THIRDPARTY,FIRSTPARTY,LOCALFOLDER
+
+# gitignore
+$ vi .gitignore
+.DS_Store
+__pycache__
+.venv
+
+log/*
+static/*
+
+# vscode
+$ mkdir .vscode
+$ vi .vscode/launch.json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Makemigrations",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rocky/manage.py",
+            "args": [
+                "makemigrations"
+            ],
+            "django": true
+        },
+        {
+            "name": "Migrate",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rocky/manage.py",
+            "args": [
+                "migrate"
+            ],
+            "django": true
+        },
+        {
+            "name": "Loaddata",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rocky/manage.py",
+            "args": [
+                "loaddata",
+                "xxxxx.json"
+            ],
+            "django": true
+        },
+        {
+            "name": "Runserver",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rocky/manage.py",
+            "args": [
+                "runserver",
+                "0.0.0.0:8000"
+            ],
+            "django": true
+        },
+        {
+            "name": "Collectstatic",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rocky/manage.py",
+            "args": [
+                "collectstatic"
+            ],
+            "django": true
+        },
+        {
+            "name": "Test",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rocky/manage.py",
+            "args": [
+                "test",
+                "xxxxx.xxxxx.xxxxx"
+            ],
+            "django": true
+        },
+        {
+            "name": "Manage",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/rocky/manage.py",
+            "args": [
+                "xxxxx",
+            ],
+            "django": true
+        }
+    ]
+}
+
+$ vi .vscode/settings.json
+{
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python3.9",
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/rocky"
+    ],
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.formatting.provider": "none",
+    "editor.formatOnSave": true,
+    "python.linting.flake8Args": [
+        "--ignore=E501, W503, W504",
+    ],
+    "python.formatting.autopep8Args": [
+        "--ignore=E501, W503, W504",
+    ],
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+        "editor.defaultFormatter": "ms-python.autopep8",
+    },
+    "isort.check": true,
+    "isort.args": [
+        "--settings-file",
+        "${workspaceFolder}/.isort.cfg",
+    ]
+}
+```
