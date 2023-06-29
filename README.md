@@ -1,9 +1,9 @@
 # RockyServer
-Base Web Server for development on RockyLinux with Django, uWSGI, PostgreSQL
+Base Web Server for development on RockyLinux with Django, uWSGI, PostgreSQL　　
 This repository codes are results of doing below.
 
 
-# Introduction
+# Overview
 example built with UTM on Mac Book.  
 This is do task below.
   - [Setup Firewall](#firewall)
@@ -15,7 +15,7 @@ This is do task below.
   - [Setup for Visual Studio Code](#develop)
 
 <a id="firewall"></a>
-## Setup Firewall
+# Setup Firewall
 ```sh
 $ sudo firewall-cmd --add-port=8000/tcp --zone=public --permanent
 $ sudo firewall-cmd --reload
@@ -37,13 +37,13 @@ public (active)
 ```
 
 <a id="adduser"></a>
-## Add user for Django
+# Add user for Django
 ```sh
 $ sudo adduser rocky
 ```
 
 <a id="database"></a>
-## Setup Database
+# Setup Database
 ```sh
 # install package
 $ sudo yum install -y postgresql-server
@@ -87,7 +87,7 @@ EOS
 ```
 
 <a id="git"></a>
-## Setup Git
+# Setup Git
 ```sh
 # install git
 $ sudo yum install -y git
@@ -120,7 +120,7 @@ $ git clone -b develop git@github.com:taogya/RockyServer.git
 ```
 
 <a id="django"></a>
-## Setup Django
+# Setup Django
 ```sh
 # install package
 $ sudo yum install -y gcc python3-devel memcached
@@ -385,7 +385,7 @@ $ python rocky/manage.py runserver 0.0.0.0:8000
    If admin view is displayed, it is success.
 
 <a id="uwsgi"></a>
-## Setup uWSGI
+# Setup uWSGI
 ```sh
 $ sudo su - rocky
 $ cd app/RockyServer
@@ -460,7 +460,7 @@ $ sudo systemctl start uwsgi
    If admin view is displayed, it is success.
 
 <a id="develop"></a>
-## Setup for Visual Studio Code
+# Setup for Visual Studio Code
 ```sh
 # install package
 $ sudo yum install -y tar
